@@ -50,5 +50,38 @@ namespace cis237Assignment6.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
+
+        // Extra unit tests
+        [TestMethod]
+        public void Beverages()
+        {
+            BeveragesController controller = new BeveragesController();
+
+            ViewResult result = controller.Index() as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Beverages()
+        {
+            BeveragesController controller = new BeveragesController();
+
+            ViewResult result = controller.Create() as ViewResult;
+
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void Beverages()
+        {
+            BeveragesController controller = new BeveragesController();
+
+            string id = "";
+
+            ViewResult result = controller.Edit(id) as ViewResult;
+
+            Assert.AreSame(id, result);
+        }
     }
 }
