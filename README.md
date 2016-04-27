@@ -3,6 +3,7 @@
 ## Due 04-27-2016
 
 ## Author
+Tim Keranen
 
 ## Description
 
@@ -115,6 +116,7 @@ browser and delete all your cookies. I'm sure only a few are
 the culprit, but I don't know which ones.
 
 ## Outside Resources Used
+None used.
 
 ## Known Problems, Issues, And/Or Errors in the Program
 

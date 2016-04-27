@@ -15,6 +15,7 @@
                 // CRF for validation
                 @Html.AntiForgeryToken()
             
+                @*Textboxes for filter fields.*@
                 <label for="name">Name</label>
                 @Html.TextBox("Name", (string)ViewBag.filterName)
                 <label for="pack">Pack</label>

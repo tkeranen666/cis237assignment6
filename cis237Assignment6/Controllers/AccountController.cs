@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using cis237Assignment6.Models;
 
+// Tim Keranen
+
 namespace cis237Assignment6.Controllers
 {
     [Authorize]

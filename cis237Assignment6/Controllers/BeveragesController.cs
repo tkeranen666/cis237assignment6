@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using cis237Assignment6;
 
+// Tim Keranen
+
 namespace cis237Assignment6.Controllers
 {
     [Authorize]
@@ -28,6 +30,7 @@ namespace cis237Assignment6.Controllers
             decimal minPrice = 0;
             decimal maxPrice = 90;
 
+            // Retrieve value from session and assign it to a variable.
             if (Session["name"] != null && !String.IsNullOrWhiteSpace((string)Session["name"]))
             {
                 filterName = (string)Session["name"];
@@ -42,7 +45,6 @@ namespace cis237Assignment6.Controllers
             {
                 filterMinPrice = (string)Session["minPrice"];
                 minPrice = Convert.ToDecimal(filterMinPrice);
-
             }
 
             if (Session["maxPrice"] != null && !String.IsNullOrWhiteSpace((string)Session["maxPrice"]))
@@ -51,20 +53,23 @@ namespace cis237Assignment6.Controllers
                 maxPrice = Convert.ToDecimal(filterMaxPrice);
             }
 
+            // Filter values using entered criteria.
             IEnumerable<Beverage> filtered = BeveragesToFilter.Where(beverage => beverage.price >= minPrice &&
                                                                                  beverage.price <= maxPrice &&
                                                                                  beverage.pack.Contains(filterPack) &&
-            /*IEnumerable<Beverage> filtered = BeveragesToFilter.Where(beverage =>*/ beverage.name.Contains(filterName));
+                                                                                 beverage.name.Contains(filterName));
 
+            // Create a list for filtered values.
             IEnumerable<Beverage> finalFiltered = filtered.ToList();
 
+            // Send session values to viewbag.
             ViewBag.filterName = filterName;
             ViewBag.filterPack = filterPack;
             ViewBag.filterMinPrice = filterMinPrice;
             ViewBag.filterMaxPrice = filterMaxPrice;
 
+            // Return the filtered list.
             return View(finalFiltered);
-            //return View(db.Beverages.ToList());
         }
 
         // GET: Beverages/Details/5
@@ -171,19 +176,23 @@ namespace cis237Assignment6.Controllers
             base.Dispose(disposing);
         }
 
+        // Restrict requests other than Post, and set 'Filter' as the action name.
         [HttpPost, ActionName("Filter")]
         public ActionResult Filter()
         {
+            // Assign form data to string variables.
             string name = Request.Form.Get("name");
             string pack = Request.Form.Get("pack");
             string minPrice = Request.Form.Get("minPrice");
             string maxPrice = Request.Form.Get("maxPrice");
 
+            // Store data in a session.
             Session["name"] = name;
             Session["pack"] = pack;
             Session["minPrice"] = minPrice;
             Session["maxPrice"] = maxPrice;
 
+            // Redirect to index page for filtering.
             return RedirectToAction("Index");
         }
     }
