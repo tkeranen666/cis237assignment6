@@ -94,6 +94,8 @@ You can get up to 40 assignment points of extra credit by doing the following:
 * Ability to click on a table header and sort the list of items by that column. You must do at least 2 column headings.
 * Write at least 2 unit tests to verify your code.
 
+I added a few unit test methods, but they're kind of generic.
+
 ### Notes
 
 There is a Youtube video I found that should help you out with MVC.
